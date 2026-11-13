@@ -1,0 +1,1 @@
+Se usa IA para la creación de un archivo "validators.py" el cual valida el rut y luego lo importa hacia models. También se usa para importar uuid a models e incluirlo en el dato "codigo" dentro de el modelo "Reserva", para que dicho campo sea unico y se cree al generar una reserva sin tener que pedirselo al usuario.

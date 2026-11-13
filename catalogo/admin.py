@@ -1,5 +1,5 @@
 from django.contrib import admin
-from catalogo.models import Comic, Editorial
+from catalogo.models import Comic, Editorial, Reserva
 
 
 class ComicAdmin(admin.ModelAdmin):
@@ -13,5 +13,11 @@ class EditorialAdmin(admin.ModelAdmin):
     list_filter = ['nombre']
     search_fields = ['nombre']
 
+class ReservaAdmin(admin.ModelAdmin):
+    list_display = ['nombre_cliente', 'rut_cliente', 'comic', 'cantidad_ejemplares']
+    list_filter = ['nombre_cliente', 'comic']
+    search_fields = ['nombre_cliente', 'rut_cliente']
+
 admin.site.register(Comic, ComicAdmin)
 admin.site.register(Editorial, EditorialAdmin)
+admin.site.register(Reserva, ReservaAdmin)
