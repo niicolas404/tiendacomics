@@ -24,6 +24,10 @@ class Comic(models.Model):
     stock = models.PositiveIntegerField()
     
 
+    @property
+    def disponible(self):
+        return self.stock > 0
+
     def __str__(self):
         return self.titulo
 

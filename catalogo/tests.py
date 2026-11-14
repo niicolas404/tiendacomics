@@ -1,8 +1,14 @@
 from django.core.exceptions import ValidationError
 from django.test import SimpleTestCase
 
-from .models import Reserva
+from .models import Comic, Reserva
 from .validators import validar_rut
+
+
+class ComicAvailabilityTests(SimpleTestCase):
+    def test_disponible_depends_on_stock(self):
+        self.assertTrue(Comic(stock=1).disponible)
+        self.assertFalse(Comic(stock=0).disponible)
 
 
 class ValidarRutTests(SimpleTestCase):
