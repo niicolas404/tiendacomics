@@ -23,9 +23,39 @@
         </header>
         <main>
 
+            {% if comics %}
+                <div class="row justify-content-center align-items-top g-2 row-cols-4">
+                    {% for c in comics %}
+                        <div class="col">
+                            <div class="card bg-dark text-white">
+                                {% if c.portada %}
+                                <img class="card-img-top" src="{{ c.portada.url }}" alt="{{ c.titulo }}">
+                                {% endif %}
+
+                                <div class="card-body d-flex flex-column">
+                                    <h4 class="card-title">{{ c.titulo }}</h4>
+                                    <p class="card-text">Autor: {{ c.autor }}</p>
+                                    <p class="card-text">Tomo: {{ c.tomo }}</p>
+                                    <p class="card-text">Stock: {{ c.stock }}</p>
+                                    
+                                    <a name="" id="" class="btn btn-primary w-100 mt-auto" href="#" role="button">Ver detalles</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="alert alert-warning" role="alert">
+                    No hay cómics disponibles en este momento.
+                </div>
+            {% endif %}
+
         </main>
         <footer>
-            <!-- place footer here -->
+            <div class="alert alert-dark my-3 text-center" role="alert">
+                &copy; 2026 Tienda de Cómics. Todos los derechos reservados.
+            </div>
         </footer>
         <!-- Bootstrap JavaScript Bundle (includes Popper) -->
         <script
