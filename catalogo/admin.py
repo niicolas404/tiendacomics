@@ -9,7 +9,7 @@ class ComicAdmin(admin.ModelAdmin):
 
     @admin.display(description="Disponibilidad")
     def disponible_texto(self, obj):
-        return "Sí" if obj.disponible else "No"
+        return "Disponible" if obj.disponible else "Agotado"
 
 
 class EditorialAdmin(admin.ModelAdmin):
