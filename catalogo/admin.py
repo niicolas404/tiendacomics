@@ -3,14 +3,9 @@ from catalogo.models import Comic, Editorial, Reserva
 
 
 class ComicAdmin(admin.ModelAdmin):
-    list_display = ['titulo', 'autor', 'fecha_publicacion', 'precio_chileno', 'tomo', 'material', 'stock', 'editorial', 'disponible_texto']
-    list_filter = ['titulo', 'editorial', 'material']
+    list_display = ['titulo', 'autor', 'fecha_publicacion', 'precio_chileno', 'tomo', 'material', 'stock', 'editorial', 'disponible']
+    list_filter = ['titulo', 'editorial', 'material', 'disponible']
     search_fields = ['titulo', 'autor', 'editorial__nombre']
-
-    @admin.display(description="Disponibilidad")
-    def disponible_texto(self, obj):
-        return "Disponible" if obj.disponible else "Agotado"
-
 
 class EditorialAdmin(admin.ModelAdmin):
     list_display = ['nombre', 'descripcion']

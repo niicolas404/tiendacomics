@@ -3,6 +3,6 @@ from catalogo.models import Comic, Editorial, Reserva
 
 
 def base(request):
-    comics = Comic.objects.all()
+    comics = Comic.objects.filter(disponible=True)
     data = {'comics': comics}
     return render(request, 'base.html', data)

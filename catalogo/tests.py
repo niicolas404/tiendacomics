@@ -6,9 +6,9 @@ from .validators import validar_rut
 
 
 class ComicAvailabilityTests(SimpleTestCase):
-    def test_disponible_depends_on_stock(self):
-        self.assertTrue(Comic(stock=1).disponible)
-        self.assertFalse(Comic(stock=0).disponible)
+    def test_disponibilidad_is_independent_of_stock(self):
+        self.assertTrue(Comic(disponible=True, stock=0).disponible)
+        self.assertFalse(Comic(disponible=False, stock=5).disponible)
 
 
 class ValidarRutTests(SimpleTestCase):
