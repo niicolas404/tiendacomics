@@ -27,7 +27,7 @@
                 <div class="row justify-content-center align-items-top g-2 row-cols-4">
                     {% for c in comics %}
                         <div class="col">
-                            <div class="card bg-dark text-white">
+                            <div class="card bg-dark text-white h-100">
                                 {% if c.portada %}
                                 <img class="card-img-top" src="{{ c.portada.url }}" alt="{{ c.titulo }}">
                                 {% endif %}
@@ -39,7 +39,7 @@
                                     <p class="card-text">Stock: {{ c.stock }}</p>
 
                                     {% if c.stock > 0 %}
-                                    <a name="" id="" class="btn btn-primary w-100 mt-auto" href="#" role="button">VER DETALLE</a>
+                                    <a name="" id="" class="btn btn-primary w-100 mt-auto" href="reservar/{{ c.id }}" role="button">VER DETALLE</a>
                                     
                                     {% else %}
                                     <a name="" id="" class="btn btn-danger w-100 mt-auto disabled" href="#" role="button">AGOTADO</a>

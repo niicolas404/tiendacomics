@@ -8,6 +8,7 @@ from tiendacomics import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.base),
+    path('reservar/<int:comic_id>', views.reservar),
 ]
 
 

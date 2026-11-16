@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <title>DJANGO TIENDA</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <!-- Bootstrap CSS v5.3.8 -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+            crossorigin="anonymous"
+        />
+    </head>
+
+    <body class="container mt-3">
+        <header>
+            <div class="alert alert-info text-center display-3" role="alert">
+                Bienvenido a la tienda de cómics
+            </div>
+        </header>
+        <main>
+            <div class="row justify-content-center align-item-top g-2">
+                <div class="col-4">
+                    <img src="{{comic.portada.url}}" class="img-fluid" alt="{{comic.titulo}}">
+                     <p>
+                        <br>
+                        Editorial: {{comic.editorial}}
+                        <br>Autor: {{comic.autor}} 
+                        <br>Precio: {{comic.precio_chileno}}
+                        <br>Tomo: {{comic.tomo}}
+                        <br>Stock: {{comic.stock}}
+
+                     </p>
+                </div>
+                <div class="col">
+                    <h1 class="display-4">{{comic.titulo}}</h1>
+                    <form method="POST">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <a name="" id="" class="btn btn-danger" href="/" role="button">Cancelar</a>
+                        <button type="submit" class="btn btn-primary float-end">Reservar</button>
+                    </form>
+
+                </div>
+
+
+            </div>  
+
+        </main>
+        <footer>
+            <div class="alert alert-dark my-3 text-center" role="alert">
+                &copy; 2026 Tienda de Cómics. Todos los derechos reservados.
+            </div>
+        </footer>
+        <!-- Bootstrap JavaScript Bundle (includes Popper) -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"
+        ></script>
+    </body>
+</html>

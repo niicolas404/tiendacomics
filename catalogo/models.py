@@ -22,7 +22,7 @@ class Comic(models.Model):
     tomo = models.PositiveIntegerField()
     material = models.BooleanField(default=False, verbose_name="¿Es tapa dura?")
     stock = models.PositiveIntegerField()
-    disponible = models.BooleanField(default=True, verbose_name="¿Disponible en la web?")
+    disponible = models.BooleanField(default=True, verbose_name="¿Disponible en el catálogo público?")
 
     def __str__(self):
         return self.titulo
