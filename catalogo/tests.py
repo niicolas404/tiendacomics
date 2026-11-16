@@ -1,6 +1,7 @@
 from unittest.mock import call, patch
 
 from django.core.exceptions import ValidationError
+from django.http import Http404
 from django.test import RequestFactory, SimpleTestCase
 
 from .models import Comic, Reserva
@@ -28,6 +29,15 @@ class ComicSearchTests(SimpleTestCase):
             ],
         )
         editorial_all.assert_called_once_with()
+
+
+class ComicDetailAvailabilityTests(SimpleTestCase):
+    @patch('catalogo.views.get_object_or_404', side_effect=Http404)
+    def test_missing_or_unavailable_comic_returns_404(self, comic_lookup):
+        response = self.client.get('/reservar/999')
+
+        self.assertEqual(response.status_code, 404)
+        comic_lookup.assert_called_once_with(Comic, id=999, disponible=True)
 
 
 class ComicAvailabilityTests(SimpleTestCase):

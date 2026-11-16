@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from catalogo.models import Comic, Editorial, Reserva
 
 from catalogo.forms import FormReserva
@@ -22,9 +22,8 @@ def base(request):
     return render(request, 'base.html', data)
 
 def reservar(request, comic_id):
-
+    comic = get_object_or_404(Comic, id=comic_id, disponible=True)
     form = FormReserva()
     form.fields['id_comic'].initial = comic_id
-    comic = Comic.objects.get(id=comic_id)
     data = {'comic': comic, 'form': form}
     return render(request, 'reservar.html', data)
