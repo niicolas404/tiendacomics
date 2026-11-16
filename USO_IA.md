@@ -2,3 +2,6 @@ Se usa IA para la creación de un archivo "validators.py" el cual valida el rut 
 
 
 Se usa IA para separar el stock del dato "disponibilidad" para que así se pueda quitar un comic si el admin lo ve conveniente sin tener que ajustar el stock en "0" para sacarlo de la pagina web. Ahora los que estan sin stock se muestran como "Agotado".
+
+
+Se usa IA para generar una barra de busqueda que permita filtrar por titulo de cómic y editorial (o ambas a la vez).

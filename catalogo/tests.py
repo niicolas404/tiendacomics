@@ -1,8 +1,33 @@
+from unittest.mock import call, patch
+
 from django.core.exceptions import ValidationError
-from django.test import SimpleTestCase
+from django.test import RequestFactory, SimpleTestCase
 
 from .models import Comic, Reserva
 from .validators import validar_rut
+from .views import base
+
+
+class ComicSearchTests(SimpleTestCase):
+    @patch('catalogo.views.Editorial.objects.all', return_value=[])
+    @patch('catalogo.views.Comic.objects.filter')
+    def test_title_and_editorial_filters_can_be_combined(
+        self, comic_filter, editorial_all
+    ):
+        comics = comic_filter.return_value
+        comics.filter.return_value = comics
+
+        base(RequestFactory().get('/', {'q': 'Batman', 'editorial': '2'}))
+
+        self.assertEqual(comic_filter.call_args, call(disponible=True))
+        self.assertEqual(
+            comics.filter.call_args_list,
+            [
+                call(titulo__icontains='Batman'),
+                call(editorial_id='2'),
+            ],
+        )
+        editorial_all.assert_called_once_with()
 
 
 class ComicAvailabilityTests(SimpleTestCase):

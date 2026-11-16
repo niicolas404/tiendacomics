@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-bs-theme="light">
+<html lang="es" data-bs-theme="light">
     <head>
         <title>DJANGO TIENDA</title>
         <!-- Required meta tags -->
@@ -20,6 +20,33 @@
             <div class="alert alert-info text-center display-3" role="alert">
                 Bienvenido a la tienda de cómics
             </div>
+            <form method="get" action="{% url 'catalogo_inicio' %}" class="row g-2 align-items-end mb-4">
+                <div class="col-md">
+                    <label for="comic-search" class="form-label">Buscar por título</label>
+                    <input
+                        type="search"
+                        class="form-control"
+                        id="comic-search"
+                        name="q"
+                        value="{{ search_query }}"
+                        placeholder="Título del cómic"
+                    >
+                </div>
+                <div class="col-md">
+                    <label for="editorial-filter" class="form-label">Editorial</label>
+                    <select class="form-select" id="editorial-filter" name="editorial">
+                        <option value="">Todas las editoriales</option>
+                        {% for editorial in editoriales %}
+                            <option value="{{ editorial.id }}" {% if selected_editorial == editorial.id|stringformat:"s" %}selected{% endif %}>
+                                {{ editorial.nombre }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary">Buscar</button>
+                </div>
+            </form>
         </header>
         <main>
 
@@ -53,8 +80,9 @@
                 </div>
             {% else %}
                 <div class="alert alert-warning" role="alert">
-                    No hay cómics disponibles en este momento.
+                    No se encontraron cómics con los criterios seleccionados.
                 </div>
+                <a name="" id="" class="btn btn-danger" href="{% url 'catalogo_inicio' %}" role="button">Volver al catálogo</a>
             {% endif %}
 
         </main>

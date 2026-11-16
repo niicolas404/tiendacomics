@@ -7,7 +7,7 @@ from tiendacomics import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.base),
+    path('', views.base, name='catalogo_inicio'),
     path('reservar/<int:comic_id>', views.reservar),
 ]
 

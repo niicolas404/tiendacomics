@@ -5,7 +5,20 @@ from catalogo.forms import FormReserva
 
 def base(request):
     comics = Comic.objects.filter(disponible=True)
-    data = {'comics': comics}
+    search_query = request.GET.get('q', '').strip()
+    selected_editorial = request.GET.get('editorial', '')
+
+    if search_query:
+        comics = comics.filter(titulo__icontains=search_query)
+    if selected_editorial.isdecimal():
+        comics = comics.filter(editorial_id=selected_editorial)
+
+    data = {
+        'comics': comics,
+        'editoriales': Editorial.objects.all(),
+        'search_query': search_query,
+        'selected_editorial': selected_editorial,
+    }
     return render(request, 'base.html', data)
 
 def reservar(request, comic_id):
