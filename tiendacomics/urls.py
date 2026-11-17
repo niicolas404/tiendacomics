@@ -9,6 +9,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.base, name='catalogo_inicio'),
     path('reservar/<int:comic_id>', views.reservar),
+    path('comprobante/<uuid:codigo>', views.comprobante, name='comprobante'),
 ]
 
 

@@ -5,3 +5,6 @@ Se usa IA para separar el stock del dato "disponibilidad" para que así se pueda
 
 
 Se usa IA para generar una barra de busqueda que permita filtrar por titulo de cómic y editorial (o ambas a la vez).
+
+
+Se usa IA para crear la validación de datos (Email, Rut y control de stock ) Los resultados se muestran desde "reserva.html", cuando el usuario registra sus datos.

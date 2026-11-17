@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-bs-theme="light">
+<html lang="es" data-bs-theme="light">
     <head>
         <title>DJANGO TIENDA</title>
         <!-- Required meta tags -->
@@ -22,9 +22,14 @@
             </div>
         </header>
         <main>
-
-           
-
+            <div class="alert alert-success" role="alert">
+                Reserva realizada correctamente.
+            </div>
+            <h1 class="display-4">Comprobante de reserva</h1>
+          
+            <a class="btn btn-primary" href="{% url 'catalogo_inicio' %}" role="button">
+                Volver al catálogo
+            </a>
         </main>
         <footer>
             <div class="alert alert-dark my-3 text-center" role="alert">

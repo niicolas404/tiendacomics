@@ -33,7 +33,7 @@ class Comic(models.Model):
 class Reserva(models.Model):
     comic = models.ForeignKey(Comic, on_delete=models.CASCADE)
     nombre_cliente = models.CharField(max_length=50)
-    correo_cliente = models.EmailField(max_length=50, blank=True)
+    correo_cliente = models.EmailField(max_length=50)
     rut_cliente = models.CharField(max_length=12, validators=[validar_rut])
     cantidad_ejemplares = models.PositiveIntegerField(
         validators=[MinValueValidator(1)]
