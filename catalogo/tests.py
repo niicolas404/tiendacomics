@@ -1,3 +1,4 @@
+from datetime import datetime, timezone as datetime_timezone
 import uuid
 from types import SimpleNamespace
 from unittest.mock import MagicMock, call, patch
@@ -6,11 +7,12 @@ from django.core.exceptions import ValidationError
 from django.http import Http404
 from django.test import RequestFactory, SimpleTestCase
 from django.urls import reverse
+from django.utils import timezone
 
 from .forms import FormReserva
 from .models import Comic, Reserva
 from .validators import validar_rut
-from .views import base, reservar
+from .views import base, comprobante, reservar
 
 
 class ComicSearchTests(SimpleTestCase):
@@ -170,6 +172,49 @@ class ReservaSubmissionTests(SimpleTestCase):
         page = response.content.decode()
         self.assertIn('Agotado. No se pueden hacer reservas de este cómic.', page)
         self.assertNotIn('name="correo_cliente"', page)
+
+
+class ReservaReceiptTests(SimpleTestCase):
+    def test_receipt_shows_reservation_details(self):
+        codigo = uuid.uuid4()
+        fecha_reserva = datetime(
+            2026, 1, 15, 12, 30, tzinfo=datetime_timezone.utc
+        )
+        reserva = SimpleNamespace(
+            codigo=codigo,
+            comic=SimpleNamespace(titulo='Batman'),
+            nombre_cliente='Ana Pérez',
+            rut_cliente='12.345.678-5',
+            correo_cliente='ana@example.com',
+            cantidad_ejemplares=2,
+            fecha_reserva=fecha_reserva,
+            total_chileno=lambda: '$3.000',
+        )
+
+        with patch('catalogo.views.get_object_or_404', return_value=reserva):
+            response = comprobante(
+                RequestFactory().get(f'/comprobante/{codigo}'),
+                codigo=codigo,
+            )
+
+        page = response.content.decode()
+        self.assertIn(str(codigo), page)
+        self.assertIn('Batman', page)
+        self.assertIn('Ana Pérez', page)
+        self.assertIn('12.345.678-5', page)
+        self.assertIn('ana@example.com', page)
+        self.assertIn('2', page)
+        self.assertIn('$3.000', page)
+        self.assertIn(
+            timezone.localtime(fecha_reserva).strftime('%d/%m/%Y %H:%M'),
+            page,
+        )
+
+    def test_reservation_total_is_formatted_in_chilean_pesos(self):
+        comic = Comic(precio=1500)
+        reserva = Reserva(comic=comic, cantidad_ejemplares=2)
+
+        self.assertEqual(reserva.total_chileno(), '$3.000')
 
 
 class ComicAvailabilityTests(SimpleTestCase):

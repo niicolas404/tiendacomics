@@ -25,9 +25,40 @@
             <div class="alert alert-success" role="alert">
                 Reserva realizada correctamente.
             </div>
-            <h1 class="display-4">Comprobante de reserva</h1>
+            <div class="border border-dark border-4 p-3">
+                <div class="row justify-content-center align-items-center g-2">
+                    <div class="col-12 display-5 bg-dark text-white text-center">Comprobante de reserva</div>
+                    <div class="col p-5">
+                        <div class="row">
+                            <div class="col-6 col-md-5">
+                                <p><strong>Código:</strong> {{ reserva.codigo }}</p>
+                                <p><strong>Nombre:</strong> {{ reserva.nombre_cliente }}</p>
+                                <p><strong>RUT:</strong> {{ reserva.rut_cliente }}</p>
+                                <p><strong>Email:</strong> {{ reserva.correo_cliente }}</p>
+                            </div>
+                            <div class="col-6 col-md-5">
+                                <p><strong>Cómic reservado:</strong> {{ reserva.comic.titulo }}</p>
+                                <p><strong>Cantidad:</strong> {{ reserva.cantidad_ejemplares }}</p>
+                                <p><strong>Total:</strong> {{ reserva.total_chileno }}</p>
+                                <p><strong>Fecha y hora:</strong> {{ reserva.fecha_reserva|date:"d/m/Y H:i" }}</p>
+                            </div>
+                            <div class="col-12 col-md-2 text-end">
+                                <img src="/media/Codigo qr/qr.png" class="img-fluid" alt="Código QR">
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="alert alert-info mt-3 text-center" role="alert">
+                Recuerda que debes presentar este comprobante al momento de retirar tus comics reservados.
+            </div>
+
           
-            <a class="btn btn-primary" href="{% url 'catalogo_inicio' %}" role="button">
+            <a class="btn btn-primary mt-4" href="{% url 'catalogo_inicio' %}" role="button">
                 Volver al catálogo
             </a>
         </main>

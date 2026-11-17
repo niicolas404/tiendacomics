@@ -13,7 +13,7 @@ class EditorialAdmin(admin.ModelAdmin):
     search_fields = ['nombre']
 
 class ReservaAdmin(admin.ModelAdmin):
-    list_display = ['codigo', 'comic', 'nombre_cliente', 'rut_cliente', 'cantidad_ejemplares', 'fecha_reserva']
+    list_display = ['codigo', 'comic', 'nombre_cliente', 'rut_cliente', 'correo_cliente', 'cantidad_ejemplares', 'fecha_reserva']
     list_filter = ['nombre_cliente', 'rut_cliente', 'comic']
     search_fields = ['nombre_cliente', 'rut_cliente']
 
