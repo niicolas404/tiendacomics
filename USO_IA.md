@@ -8,3 +8,6 @@ Se usa IA para generar una barra de busqueda que permita filtrar por titulo de c
 
 
 Se usa IA para crear la validación de datos (Email, Rut y control de stock ) Los resultados se muestran desde "reserva.html", cuando el usuario registra sus datos.
+
+
+Se usa IA para guardar los datos del proyecto en json y hacer un readme con instrucciones de ejecución.

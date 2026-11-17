@@ -1,0 +1,187 @@
+[
+{
+  "model": "catalogo.editorial",
+  "pk": 2,
+  "fields": {
+    "nombre": "Marvel comic",
+    "descripcion": ""
+  }
+},
+{
+  "model": "catalogo.editorial",
+  "pk": 3,
+  "fields": {
+    "nombre": "DC comic",
+    "descripcion": ""
+  }
+},
+{
+  "model": "catalogo.editorial",
+  "pk": 5,
+  "fields": {
+    "nombre": "Image Comics",
+    "descripcion": ""
+  }
+},
+{
+  "model": "catalogo.comic",
+  "pk": 3,
+  "fields": {
+    "editorial": 3,
+    "titulo": "Absolute Batman",
+    "autor": "Scott Snyder y Nick Dragotta",
+    "fecha_publicacion": "2024-10-09",
+    "portada": "portadas/absolute-batman-1.jpg",
+    "precio": 15000,
+    "tomo": 1,
+    "material": true,
+    "stock": 1,
+    "disponible": true
+  }
+},
+{
+  "model": "catalogo.comic",
+  "pk": 4,
+  "fields": {
+    "editorial": 2,
+    "titulo": "Gambit",
+    "autor": "Chris Claremont",
+    "fecha_publicacion": "1990-10-10",
+    "portada": "portadas/gambit.jpg",
+    "precio": 10000,
+    "tomo": 1,
+    "material": false,
+    "stock": 0,
+    "disponible": true
+  }
+},
+{
+  "model": "catalogo.comic",
+  "pk": 5,
+  "fields": {
+    "editorial": 3,
+    "titulo": "Superman",
+    "autor": "Jerry Siegel",
+    "fecha_publicacion": "1938-09-18",
+    "portada": "portadas/superman_vol_1.avif",
+    "precio": 6000,
+    "tomo": 1,
+    "material": true,
+    "stock": 6,
+    "disponible": false
+  }
+},
+{
+  "model": "catalogo.comic",
+  "pk": 6,
+  "fields": {
+    "editorial": 2,
+    "titulo": "Spiderman",
+    "autor": "Stan Lee",
+    "fecha_publicacion": "1962-08-10",
+    "portada": "portadas/spiderman_vol_1.jpg",
+    "precio": 11000,
+    "tomo": 1,
+    "material": true,
+    "stock": 10,
+    "disponible": true
+  }
+},
+{
+  "model": "catalogo.comic",
+  "pk": 7,
+  "fields": {
+    "editorial": 5,
+    "titulo": "The Walking Dead",
+    "autor": "Robert Kirkman",
+    "fecha_publicacion": "2003-10-08",
+    "portada": "portadas/TWD_vol_1.jpg",
+    "precio": 12500,
+    "tomo": 1,
+    "material": false,
+    "stock": 0,
+    "disponible": true
+  }
+},
+{
+  "model": "catalogo.comic",
+  "pk": 8,
+  "fields": {
+    "editorial": 2,
+    "titulo": "Punisher",
+    "autor": "Gerry Conway, John Romita Sr. y Ross Andru",
+    "fecha_publicacion": "1974-02-10",
+    "portada": "portadas/punisher_vol_1.jpg",
+    "precio": 6990,
+    "tomo": 1,
+    "material": false,
+    "stock": 10,
+    "disponible": true
+  }
+},
+{
+  "model": "catalogo.reserva",
+  "pk": 10,
+  "fields": {
+    "comic": 8,
+    "nombre_cliente": "Miguel",
+    "correo_cliente": "miguel@hotmail.com",
+    "rut_cliente": "17586941-7",
+    "cantidad_ejemplares": 2,
+    "fecha_reserva": "2026-11-17T15:25:46.433Z",
+    "codigo": "ae7843c2-2be4-40c2-a6a7-b3c9b468014b"
+  }
+},
+{
+  "model": "catalogo.reserva",
+  "pk": 11,
+  "fields": {
+    "comic": 3,
+    "nombre_cliente": "Robert",
+    "correo_cliente": "robert5648@gmail.com",
+    "rut_cliente": "9387981-3",
+    "cantidad_ejemplares": 1,
+    "fecha_reserva": "2026-11-17T15:26:38.973Z",
+    "codigo": "e6bdbf2b-16fd-41b0-b0ec-240499b8c5c8"
+  }
+},
+{
+  "model": "catalogo.reserva",
+  "pk": 12,
+  "fields": {
+    "comic": 6,
+    "nombre_cliente": "Matias",
+    "correo_cliente": "matimati@gmail.com",
+    "rut_cliente": "20587823-8",
+    "cantidad_ejemplares": 2,
+    "fecha_reserva": "2026-11-17T15:27:26.738Z",
+    "codigo": "b418449a-0dc9-41af-8ff4-5eb40a216f7a"
+  }
+},
+{
+  "model": "catalogo.reserva",
+  "pk": 13,
+  "fields": {
+    "comic": 8,
+    "nombre_cliente": "josue",
+    "correo_cliente": "josuedavid@gmail.com",
+    "rut_cliente": "12808568-8",
+    "cantidad_ejemplares": 3,
+    "fecha_reserva": "2026-11-17T15:29:12.128Z",
+    "codigo": "c8cd2a43-74c6-475e-a523-5c8738ad4756"
+  }
+},
+{
+  "model": "catalogo.reserva",
+  "pk": 14,
+  "fields": {
+    "comic": 6,
+    "nombre_cliente": "Nelson",
+    "correo_cliente": "Donnelsonprime@gmail.com",
+    "rut_cliente": "14317839-0",
+    "cantidad_ejemplares": 2,
+    "fecha_reserva": "2026-11-17T15:32:46.705Z",
+    "codigo": "b6f41204-98da-4786-8350-0768c97307df"
+  }
+}
+]
