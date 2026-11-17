@@ -1,26 +1,43 @@
 # Tienda de cómics
 
-## Restaurar los datos iniciales
+## Ejecutar el proyecto en otro computador
 
 El proyecto incluye `catalogo/fixtures/datos_iniciales.json` con los datos
 exportados de editoriales, cómics y reservas. Las imágenes referenciadas por los
 cómics están en la carpeta `media/`.
 
-En un computador nuevo:
+En esta instalación, el entorno virtual está en `D:\TIENDA-DJANGO\.venv`,
+fuera de la carpeta del repositorio. Desde `D:\TIENDA-DJANGO`, créalo solo si
+aún no existe, actívalo y luego entra al repositorio:
 
-1. Instala las dependencias con `pip install -r requeriments.txt`.
-2. Configura y crea la base de datos MySQL indicada en
-   `tiendacomics/settings.py`.
-3. Ejecuta las migraciones y carga el fixture:
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+cd .\tiendacomics
+python -m pip install -r requeriments.txt
+```
 
-   ```text
-   python manage.py migrate
-   python manage.py loaddata datos_iniciales
-   ```
+Si ya estás en la carpeta del repositorio, omite `cd .\tiendacomics`. Si el
+entorno virtual ya existe, omite `python -m venv .venv` y actívalo desde su
+carpeta contenedora. En otros computadores, ajusta las rutas según dónde clones
+el proyecto y dónde crees el entorno.
 
-4. Inicia el sitio con `python manage.py runserver`.
+Inicia MySQL y crea una base de datos vacía llamada `tiendacomics`, como indica
+la configuración de `tiendacomics/settings.py`. No es necesario iniciar Apache:
+Django sirve el sitio durante el desarrollo.
 
-Carga el fixture en una base de datos vacía para restaurar el conjunto inicial.
+Luego, todavía desde la carpeta raíz del repositorio, restaura el esquema y los
+datos iniciales:
+
+```powershell
+python manage.py migrate
+python manage.py loaddata datos_iniciales
+python manage.py runserver
+```
+
+Carga el fixture una vez en una base de datos vacía para restaurar el conjunto
+inicial. Si MySQL usa otro usuario, contraseña, host o puerto, actualiza primero
+la configuración en `tiendacomics/settings.py`.
 
 ## Actualizar el fixture
 
